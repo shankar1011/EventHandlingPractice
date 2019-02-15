@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <style>
+      button {
+        background-color: transparent;
+        border: none
+      }
+      .binf-hidden {
+        display: none
+      }
+    </style>
+  </head>
+  <body>
+    <div class = "multivalue">
+      <label class="multivalue-container">MultiValue</label>
+      <div class="field">
+        <div class="read-field">
+          <button>
+            <span class="placeholder">Add text</span>
+          </button>
+        </div>
+        <div class="write-field binf-hidden">
+          <textarea class="editable-area" placeholder="Add Text" id="editable-area"></textarea>
+          <button>
+              <span class="close">Close</span>
+            </button>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+      $('.read-field').click(function(event){
+        $(".read-field").addClass("binf-hidden");
+        $(".write-field").removeClass("binf-hidden");
+      });
+      $('.close').click(function(event){
+        $(".write-field").addClass("binf-hidden");
+        $(".read-field").removeClass("binf-hidden");
+      });
+    </script>
+  </body>
+</html>
