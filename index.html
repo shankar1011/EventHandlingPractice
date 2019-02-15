@@ -1,0 +1,43 @@
+    <nav class="navbar">
+        <div>
+          <i class="fa fa-bars"></i>
+        </div>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Drop 1 <i class="fa fa-sort-down"></i></a>
+            <ul>
+              <li><a href="#">Product 1</a></li>
+              <li><a href="#">Product 2</a></li>
+              <li><a href="#">Product 3</a></li>
+              <li><a href="#">Product 4</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Drop 2 <i class="fa fa-sort-down"></i></a>
+            <ul>
+              <li><a href="#">Product 5</a></li>
+              <li><a href="#">Product 6</a></li>
+              <li><a href="#">Product 7</a></li>
+              <li><a href="#">Product 8</a></li>
+            </ul>
+          </li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </nav>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>$(".navbar div").click(function() {
+  $(".navbar ul").slideToggle();
+  $(".navbar ul ul").css("display", "none");
+});
+
+$(".navbar ul li").click(function() {
+  $(".navbar ul ul").slideUp();
+  $(this).find('ul').stop().slideToggle();
+});
+
+$(window).resize(function() {
+  if ($(window).width() > 768) {
+    $(".navbar ul").removeAttr('style');
+  }
+});
+</script>
