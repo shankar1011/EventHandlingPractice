@@ -3,10 +3,16 @@
     <style>
       button {
         background-color: transparent;
-        border: none
+        border: none;
       }
       .binf-hidden {
-        display: none
+        display: none;
+      }
+      textarea {
+        height: 60px;
+      }
+      input{
+        height: 30px;
       }
     </style>
   </head>
@@ -18,24 +24,75 @@
           <button>
             <span class="placeholder">Add text</span>
           </button>
+          <button>
+              <span class="Edit binf-hidden">Click to Edit</span>
+          </button>
         </div>
         <div class="write-field binf-hidden">
           <textarea class="editable-area" placeholder="Add Text" id="editable-area"></textarea>
           <button>
               <span class="close">Close</span>
-            </button>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class = "single">
+      <label class="singlevalue container">Single field</label>
+      <div class="single-field">
+        <div class="single-read-field">
+          <button>
+            <span class="single-placeholder">Add text</span>
+          </button>
+          <button>
+              <span class="single-Edit binf-hidden">Click to Edit</span>
+          </button>
+        </div>
+        <div class="write-field-container binf-hidden">
+          <input class="single-write-field" placeholder="Add Text" type="text"></input>
+          <button>
+            <span class="single-close">Close</span>
+          </button>
         </div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script>
+    // Code for multiline field
       $('.read-field').click(function(event){
         $(".read-field").addClass("binf-hidden");
         $(".write-field").removeClass("binf-hidden");
-      });
-      $('.close').click(function(event){
+        $("textarea").focus();
+      })
+        .mouseover(function(event){
+          $('.edit').removeClass('binf-hidden');
+        })
+        .mouseout(function(event){
+          $('.edit').addClass('binf-hidden');
+        });
+
+      // Code for normal input field
+      $('.single-read-field').click(function(event){
+        $(".single-read-field").addClass("binf-hidden");
+        $(".write-field-container").removeClass("binf-hidden");
+        $("input").focus();
+      })
+        .mouseover(function(event){
+          $('.single-edit').removeClass('binf-hidden');
+        })
+        .mouseout(function(event){
+          $('.single-edit').addClass('binf-hidden');
+        });
+
+      //code for focusout of single and multiline field
+      $("textarea").focusout(function(event){
         $(".write-field").addClass("binf-hidden");
         $(".read-field").removeClass("binf-hidden");
+        event.relatedTarget && event.relatedTarget.click();
+      });
+      $("input").focusout(function(event){
+        $(".write-field-container").addClass("binf-hidden");
+        $(".single-read-field").removeClass("binf-hidden");
+        event.relatedTarget && event.relatedTarget.click();
       });
     </script>
   </body>
