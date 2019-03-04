@@ -44,7 +44,7 @@
             <span class="single-placeholder">Add text</span>
           </button>
           <button>
-              <span class="single-Edit binf-hidden">Click to Edit</span>
+              <span class="edit-icon binf-hidden">Click to Edit</span>
           </button>
         </div>
         <div class="write-field-container binf-hidden">
@@ -69,30 +69,28 @@
         .mouseout(function(event){
           $('.edit').addClass('binf-hidden');
         });
-
       // Code for normal input field
       $('.single-read-field').click(function(event){
-        $(".single-read-field").addClass("binf-hidden");
-        $(".write-field-container").removeClass("binf-hidden");
+        $(event.currentTarget).addClass("binf-hidden");
+        $(event.currentTarget).siblings().removeClass("binf-hidden");
         $("input").focus();
       })
         .mouseover(function(event){
-          $('.single-edit').removeClass('binf-hidden');
+          $(".edit-icon").removeClass('binf-hidden');
         })
         .mouseout(function(event){
-          $('.single-edit').addClass('binf-hidden');
+          $(".edit-icon").addClass('binf-hidden');
         });
-
       //code for focusout of single and multiline field
       $("textarea").focusout(function(event){
         $(".write-field").addClass("binf-hidden");
         $(".read-field").removeClass("binf-hidden");
-        event.relatedTarget && event.relatedTarget.click();
+        // event.relatedTarget && event.relatedTarget.click();
       });
       $("input").focusout(function(event){
-        $(".write-field-container").addClass("binf-hidden");
+        $(event.target).closest(".write-field-container").addClass("binf-hidden");
         $(".single-read-field").removeClass("binf-hidden");
-        event.relatedTarget && event.relatedTarget.click();
+        // event.relatedTarget && event.relatedTarget.click();
       });
     </script>
   </body>
